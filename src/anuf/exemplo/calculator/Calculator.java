@@ -25,21 +25,20 @@ public class Calculator extends Activity {
 	private Button btn_dot;
 	private Button btn_equals;
 	private EditText display;
-	
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_calculator);
-		
+
 		fillViews();
 		sindicateEvents();
-		
+
 	}
-	
-	private void fillViews(){
-		display = (EditText) findViewById(R.id.display); 
+
+	private void fillViews() {
+		display = (EditText) findViewById(R.id.display);
 		btn_zero = (Button) findViewById(R.id.button_zero);
 		btn_one = (Button) findViewById(R.id.button_one);
 		btn_two = (Button) findViewById(R.id.button_two);
@@ -56,91 +55,146 @@ public class Calculator extends Activity {
 		btn_divide = (Button) findViewById(R.id.button_divide);
 		btn_dot = (Button) findViewById(R.id.button_dot);
 		btn_equals = (Button) findViewById(R.id.button_equals);
-		
+
 	}
-	private void sindicateEvents(){
+	
+	/**Concatenates text to displayed text*/
+	private void addTextTodisplay(View v){
+		if(v instanceof Button){
+			String theText = ((Button) v).getText().toString(); 
+			display.setText(display.getText().toString()+theText);
+		}
+		display.setText(display.getText().toString());
+	}
+	private void sindicateEvents() {
 		btn_zero.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				
+				addTextTodisplay(arg0);
 			}
 		});
 		btn_one.setOnClickListener(new OnClickListener() {
-					
+
 			@Override
 			public void onClick(View arg0) {
-					// TODO Auto-generated method stub
-						
+				addTextTodisplay(arg0);
 			}
 		});
 		btn_two.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				
+				addTextTodisplay(arg0);
 			}
 		});
 		btn_three.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				
+				addTextTodisplay(arg0);
 			}
 		});
 		btn_four.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				
+				addTextTodisplay(arg0);
 			}
 		});
 		btn_five.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				
+				addTextTodisplay(arg0);
 			}
 		});
 		btn_six.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				
+				addTextTodisplay(arg0);
 			}
 		});
 		btn_seven.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				
+				addTextTodisplay(arg0);
 			}
 		});
 		btn_eight.setOnClickListener(new OnClickListener() {
-		
-		@Override
-		public void onClick(View arg0) {
-		// TODO Auto-generated method stub
-		
-		}
+
+			@Override
+			public void onClick(View arg0) {
+				addTextTodisplay(arg0);
+			}
 		});
 		btn_nine.setOnClickListener(new OnClickListener() {
-		
-		@Override
-		public void onClick(View arg0) {
-		// TODO Auto-generated method stub
-		
-		}
-		});
-		
 
-		
+			@Override
+			public void onClick(View arg0) {
+				addTextTodisplay(arg0);
+			}
+		});
+		btn_zero.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				addTextTodisplay(arg0);
+			}
+		});
+		btn_dot.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				//TODO if dot does not exists
+				if(!display.getText().toString().contains((String) ".")){
+					addTextTodisplay(arg0);
+				}
+			}
+		});
+		btn_plus.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		btn_minus.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		btn_times.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		btn_divide.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		btn_equals.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
 	}
 }

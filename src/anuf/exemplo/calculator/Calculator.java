@@ -7,7 +7,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class Calculator extends Activity {
+public class Calculator extends Activity implements OnClickListener{
 	private Button btn_zero;
 	private Button btn_one;
 	private Button btn_two;
@@ -25,7 +25,10 @@ public class Calculator extends Activity {
 	private Button btn_dot;
 	private Button btn_equals;
 	private EditText display;
-
+	private double operando1;
+	private double operando2;
+	private String operador;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -33,7 +36,7 @@ public class Calculator extends Activity {
 		setContentView(R.layout.activity_calculator);
 
 		fillViews();
-		sindicateEvents();
+		setListeners();
 
 	}
 
@@ -56,145 +59,97 @@ public class Calculator extends Activity {
 		btn_dot = (Button) findViewById(R.id.button_dot);
 		btn_equals = (Button) findViewById(R.id.button_equals);
 
+		
 	}
-	
-	/**Concatenates text to displayed text*/
-	private void addTextTodisplay(View v){
+
+	private void setListeners(){
+		btn_zero.setOnClickListener(this);
+		btn_one.setOnClickListener(this);
+		btn_two.setOnClickListener(this);
+		btn_three.setOnClickListener(this);
+		btn_four.setOnClickListener(this);
+		btn_five.setOnClickListener(this);
+		btn_six.setOnClickListener(this);
+		btn_seven.setOnClickListener(this);
+		btn_zero.setOnClickListener(this);
+	}
+	@Override
+	public void onClick(View v) {
+		String displayText = display.getText().toString();
 		if(v instanceof Button){
-			String theText = ((Button) v).getText().toString(); 
-			display.setText(display.getText().toString()+theText);
-		}
-		display.setText(display.getText().toString());
-	}
-	private void sindicateEvents() {
-		btn_zero.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				addTextTodisplay(arg0);
-			}
-		});
-		btn_one.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				addTextTodisplay(arg0);
-			}
-		});
-		btn_two.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				addTextTodisplay(arg0);
-			}
-		});
-		btn_three.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				addTextTodisplay(arg0);
-			}
-		});
-		btn_four.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				addTextTodisplay(arg0);
-			}
-		});
-		btn_five.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				addTextTodisplay(arg0);
-			}
-		});
-		btn_six.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				addTextTodisplay(arg0);
-			}
-		});
-		btn_seven.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				addTextTodisplay(arg0);
-			}
-		});
-		btn_eight.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				addTextTodisplay(arg0);
-			}
-		});
-		btn_nine.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				addTextTodisplay(arg0);
-			}
-		});
-		btn_zero.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				addTextTodisplay(arg0);
-			}
-		});
-		btn_dot.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				//TODO if dot does not exists
-				if(!display.getText().toString().contains((String) ".")){
-					addTextTodisplay(arg0);
+			switch (v.getId()) {
+			case R.id.button_plus:
+				operador = "+";
+				if(operando1 == 0){
+					operando1 = Double.parseDouble(display.getText().toString());
+					display.setText("");
+				}else if(operando2 != 0){
+						operando2 = 0;
+						display.setText("");
+						}else{
+							operando2 = Double.parseDouble(display.getText().toString());
+							display.setText("");
+							operando1 += operando2;
+							display.setText(Double.toString(operando1));
+						}
+			break;
+	
+			case R.id.button_minus:
+				operador = "-";
+				if(operando1 == 0){
+					operando1 = Double.parseDouble(display.getText().toString());
+					display.setText("");
+				}else if(operando2 != 0){
+						operando2 = 0;
+						display.setText("");
+						}else{
+							operando2 = Double.parseDouble(display.getText().toString());
+							display.setText("");
+							operando1 -= operando2;
+							display.setText(Double.toString(operando1));
+						}
+			break;
+			case R.id.button_times:
+				operador = "*";
+				if(operando1 == 0){
+					operando1 = Double.parseDouble(display.getText().toString());
+					display.setText("");
+				}else if(operando2 != 0){
+						operando2 = 0;
+						display.setText("");
+						}else{
+							operando2 = Double.parseDouble(display.getText().toString());
+							display.setText("");
+							operando1 *= operando2;
+							display.setText(Double.toString(operando1));
+						}
+			break;
+			case R.id.button_divide:
+				operador = "/";
+				if(operando1 == 0){
+					operando1 = Double.parseDouble(display.getText().toString());
+					display.setText("");
+				}else if(operando2 != 0){
+						operando2 = 0;
+						display.setText("");
+						}else{
+							operando2 = Double.parseDouble(display.getText().toString());
+							display.setText("");
+							operando1 /= operando2;
+							display.setText(Double.toString(operando1));
+						}
+			break;
+			default:
+				if(operando2 != 0){
+					operando2 = 0;
+					display.setText("");
 				}
+				displayText = displayText + ((Button) v).getText();
+				display.setText(displayText);
+
+				break;
 			}
-		});
-		btn_plus.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-		btn_minus.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-		btn_times.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-
-		btn_divide.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-		btn_equals.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-
+		}
+		
 	}
 }

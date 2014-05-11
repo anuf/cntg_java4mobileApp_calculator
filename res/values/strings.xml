@@ -22,5 +22,8 @@
     <string name="eight">8</string>
     <string name="nine">9</string>
     
+    <string name="cls">cls</string>
+    <string name="reset">reset</string>
+    
 
 </resources>

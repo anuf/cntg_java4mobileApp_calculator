@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">Calculator</string>
+	<string name="btnCalc">Calculadora</string>
+    <string name="app_name">Ppal</string>
+    <string name="calculator">Calculator</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     
@@ -25,5 +26,6 @@
     <string name="cls">cls</string>
     <string name="reset">reset</string>
     
-
+	<string name="button_open_calculator">Calculator</string>
+	<string name="button_random_generator">Random</string>
 </resources>

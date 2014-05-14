@@ -94,6 +94,8 @@ public final class R {
         public static final int five=0x7f050010;
         public static final int four=0x7f05000f;
         public static final int hello_world=0x7f050003;
+        public static final int hint_random=0x7f050019;
+        public static final int hint_result=0x7f05001a;
         public static final int minus=0x7f050006;
         public static final int nine=0x7f050014;
         public static final int one=0x7f05000c;

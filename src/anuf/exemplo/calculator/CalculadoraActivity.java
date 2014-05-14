@@ -138,8 +138,9 @@ public class CalculadoraActivity extends Activity {
 					break;
 				}
 				
+				// This intent returns the result of the calculation to the main activity
 				Intent data = new Intent();
-				data.putExtra("result", txtResult.getText().toString());
+				data.putExtra("result", String.valueOf(result));
 				setResult(RESULT_OK,data);
 				finish();
 			}
